@@ -4,6 +4,24 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
          int[] massiv2 = inputArray();
+        System.out.println("Сумма всех элементов = "+sumArray(massiv2));
+        System.out.println("Минимальный = "+minValueArray(massiv2));
+        System.out.println("Номер максимального = "+indexOfMaxInArray(massiv2));
+        System.out.println("поменяли мин и макс: ");
+        swapMinMaxArray(massiv2);
+        printFromTo(0,massiv2.length-1, massiv2);
+        System.out.println("в обратном порядке:");
+        printBackward(massiv2);
+        System.out.println("вывести со второго, по предпоследний, например");
+        printFromTo(2,massiv2.length-1,massiv2);
+        System.out.println("Введите х:");
+        Scanner read = new Scanner(System.in);
+        int x = read.nextInt();
+        System.out.println("Номер х: "+indexOf(x,massiv2));
+        System.out.println("Введите х:");
+        x = read.nextInt();
+        System.out.println("Номер ближайшего к х: "+indexOfNearestByModule(x,massiv2));
+
     }
     public static int sumArray(int[] m)
     {
@@ -66,10 +84,12 @@ public class Main {
         for (int i = m.length-1; i>=0; i--){
             System.out.print(m[i]+" ");
         }
+        System.out.println("");
     }
     public static void printFromTo(int i, int j, int[] m){
         for (; i<=j; i++)
-            System.out.println(m[i]+" ");
+            System.out.print(m[i]+" ");
+        System.out.println("");
     }
     public static void readArray(int[] m)
     {
