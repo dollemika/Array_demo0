@@ -1,38 +1,76 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        int[] massiv0 = new int[5]; //объявление переменной и выделение памяти для 5 целых чисел
-        //массив уже заполнен 0
-        int[] massiv1 = {12, 16, 13, -8, 7, 9};
-
-        int[] massiv2 = inputArray();
-
-       // printArray("массив0 содержит ", massiv0);
-       // printArray("массив1 содержит ", massiv1);
-        printArray("массив2 содержит ", massiv2);
-       // fillArray(massiv0, 193);
-       // printArray("массив0 содержит ", massiv0);
-
-
-//        printArray("массив2 содержит ", massiv2);
-
+         int[] massiv2 = inputArray();
     }
-
-    private static void printArray(String message, int[] massiv) {
-        System.out.println(message + massiv.length + " чисел");
-        for (int i = 0; i < massiv.length; i++) {
-            System.out.println(massiv[i]);
-        }
-    }
-
-    public static void fillArray(int[] m, int filler)
+    public static int sumArray(int[] m)
     {
-        for (int i = 0; i < m.length; i++) {
-            m[i] = filler;
+        int sum = 0;
+        for(int i=0; i<m.length; i++)
+            sum += m[i];
+        return sum;
+    }
+    public static int minValueArray(int[] m){
+        int min = m[0];
+        for (int i=1; i<m.length; i++){
+            if (min>m[i]) min = m[i];
+        }
+        return min;
+    }
+    public static int indexOfMaxInArray(int[] m){
+        int max = m[0],j=0;
+        for (int i =1; i<m.length; i++){
+            if (m[i]>max) {
+                max = m[i];
+                j = i;
+            }
+        }
+        return j;
+    }
+    public static int indexOfMinInArray(int[] m){
+        int min = m[0],j=0;
+        for (int i =1; i<m.length; i++){
+            if (m[i]<min) {
+                min = m[i];
+                j = i;
+            }
+        }
+        return j;
+    }
+    public static int[] swapMinMaxArray(int[] m){
+        int minI = indexOfMinInArray(m);
+        int maxI = indexOfMaxInArray(m);
+        int tmp = m[minI];
+        m[minI] = m[maxI];
+        m[maxI] = tmp;
+        return m;
+    }
+    public static int indexOf(int x,int[] m){
+        for (int i = 0; i<m.length; i++){
+            if (m[i]==x) return i;
+        }
+        return -1;
+    }
+    public static int indexOfNearestByModule(int x,int[] m){
+        int minDif = x-m[0];
+        int j = 0;
+        for (int i = 1; i<m.length; i++){
+            if ((x - m[i])<minDif) minDif = x - m[i];
+            j = i;
+        }
+        return j;
+    }
+    public static void printBackward(int[] m){
+        for (int i = m.length-1; i>=0; i--){
+            System.out.print(m[i]+" ");
         }
     }
-
+    public static void printFromTo(int i, int j, int[] m){
+        for (; i<=j; i++)
+            System.out.println(m[i]+" ");
+    }
     public static void readArray(int[] m)
     {
         Scanner scanner = new Scanner(System.in);
