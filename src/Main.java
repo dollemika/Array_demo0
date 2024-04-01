@@ -4,21 +4,21 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
          int[] massiv2 = inputArray();
-        System.out.println("Сумма всех элементов = "+sumArray(massiv2));
-        System.out.println("Минимальный = "+minValueArray(massiv2));
-        System.out.println("Номер максимального = "+indexOfMaxInArray(massiv2));
-        System.out.println("поменяли мин и макс: ");
-        swapMinMaxArray(massiv2);
-        printFromTo(0,massiv2.length-1, massiv2);
-        System.out.println("в обратном порядке:");
-        printBackward(massiv2);
-        System.out.println("вывести со второго, по предпоследний, например");
-        printFromTo(2,massiv2.length-1,massiv2);
-        System.out.println("Введите х:");
+//        System.out.println("Сумма всех элементов = "+sumArray(massiv2));
+//        System.out.println("Минимальный = "+minValueArray(massiv2));
+//        System.out.println("Номер максимального = "+indexOfMaxInArray(massiv2));
+//        System.out.println("поменяли мин и макс: ");
+//        swapMinMaxArray(massiv2);
+//        printArray(massiv2);
+//        System.out.println("в обратном порядке:");
+//        printBackward(massiv2);
+//        System.out.println("вывести между 5 и 10, например");
+//        printFromTo(5,10,massiv2);
+//        System.out.println("Введите х:");
         Scanner read = new Scanner(System.in);
         int x = read.nextInt();
-        System.out.println("Номер х: "+indexOf(x,massiv2));
-        System.out.println("Введите х:");
+//        System.out.println("Номер х: "+indexOf(x,massiv2));
+//        System.out.println("Введите х:");
         x = read.nextInt();
         System.out.println("Номер ближайшего к х: "+indexOfNearestByModule(x,massiv2));
 
@@ -38,32 +38,29 @@ public class Main {
         return min;
     }
     public static int indexOfMaxInArray(int[] m){
-        int max = m[0],j=0;
+        int j=0;
         for (int i =1; i<m.length; i++){
-            if (m[i]>max) {
-                max = m[i];
+            if (m[i]>m[j]) {
                 j = i;
             }
         }
         return j;
     }
     public static int indexOfMinInArray(int[] m){
-        int min = m[0],j=0;
+        int j=0;
         for (int i =1; i<m.length; i++){
-            if (m[i]<min) {
-                min = m[i];
+            if (m[i]<m[j]) {
                 j = i;
             }
         }
         return j;
     }
-    public static int[] swapMinMaxArray(int[] m){
+    public static void swapMinMaxArray(int[] m){
         int minI = indexOfMinInArray(m);
         int maxI = indexOfMaxInArray(m);
         int tmp = m[minI];
         m[minI] = m[maxI];
         m[maxI] = tmp;
-        return m;
     }
     public static int indexOf(int x,int[] m){
         for (int i = 0; i<m.length; i++){
@@ -72,11 +69,13 @@ public class Main {
         return -1;
     }
     public static int indexOfNearestByModule(int x,int[] m){
-        int minDif = x-m[0];
+        int minDif = Math.abs(x-m[0]);;
         int j = 0;
         for (int i = 1; i<m.length; i++){
-            if ((x - m[i])<minDif) minDif = x - m[i];
-            j = i;
+            if (Math.abs(x - m[i])<minDif) {
+                minDif = Math.abs(x - m[i]);
+                j = i;
+            }
         }
         return j;
     }
@@ -86,10 +85,16 @@ public class Main {
         }
         System.out.println("");
     }
-    public static void printFromTo(int i, int j, int[] m){
-        for (; i<=j; i++)
-            System.out.print(m[i]+" ");
+    public static void printFromTo(int x, int y, int[] m){
+        for (int i = 0; i<m.length; i++)
+            if (m[i]>=x && m[i]<=y) System.out.print(m[i]+" ");
         System.out.println("");
+    }
+    private static void printArray(int[] m) {
+        for (int i = 0; i < m.length; i++) {
+            System.out.print(m[i]+" ");
+        }
+        System.out.println(" ");
     }
     public static void readArray(int[] m)
     {
