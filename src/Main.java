@@ -6,20 +6,16 @@ public class Main {
         //массив уже заполнен 0
         int[] massiv1 = {12, 16, 13, -8, 7, 9};
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("введите размер массива 2");
-        int size = scanner.nextInt();
+        int[] massiv2 = inputArray();
 
-        int[] massiv2 = new int[size];
-
-        printArray("массив0 содержит ", massiv0);
-        printArray("массив1 содержит ", massiv1);
+       // printArray("массив0 содержит ", massiv0);
+       // printArray("массив1 содержит ", massiv1);
         printArray("массив2 содержит ", massiv2);
-        fillArray(massiv0, 193);
-        printArray("массив0 содержит ", massiv0);
+       // fillArray(massiv0, 193);
+       // printArray("массив0 содержит ", massiv0);
 
-        readArray(massiv2);
-        printArray("массив2 содержит ", massiv2);
+
+//        printArray("массив2 содержит ", massiv2);
 
     }
 
@@ -46,5 +42,14 @@ public class Main {
             value = scanner.nextInt();
             m[i] = value;
         }
+    }
+
+    public static int[] inputArray(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("введите размер массива 2");
+        int size = scanner.nextInt();
+        int[] m = new int[size];
+        readArray(m);
+        return m;
     }
 }
